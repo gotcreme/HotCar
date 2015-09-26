@@ -1,0 +1,91 @@
+﻿@using System.Collections.Generic
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/FindTrip/results")
+}
+@section Styles{
+    @Styles.Render("~/Content/jednotka/FindTrip/css")
+}
+
+<div id="main" role="main">
+    <div id="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-bordered mg-b">
+                                <div class="panel-body" style="background-color: white;">
+                                    <!--#eaedf2-->
+                                    <div class="row" id="no_seats_filter">
+                                        <div class="col-lg-12">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input id="hide_no_seats" class="filter" type="checkbox" value="">
+                                                    Сховати заповнені (<label id="no_seats_count">@ViewBag.NoSeatsCount</label>)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-half" style="border-color: lightgrey;">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h3 class="no-mg-t">Дата</h3>
+                                            <div class="btn-group">
+                                                <input id="dp2" class="form-control filter" placeholder="ДД/ММ/РРРР" type="text">
+                                                <span id="dataclear" class="fa-icon-remove-sign"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 mg-t">
+                                            Час: <span id="from_hour">0</span>h - <span id="to_hour">24</span>h
+                                            <div id="hour-slider-range" style="margin: 10px;"></div>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-half" style="border-color: lightgrey;">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h3 class="no-mg-t">Фото</h3>
+                                            <div class="radio">
+                                                <label>
+                                                    <input class="filter" id="withPhotoRadio" name="radio" type="radio" value="">
+                                                    Тільки з фото (<label id="with_photo_count">@ViewBag.PhotoCount</label>)
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input class="filter" id="noPhotoRadio" name="radio" type="radio" value="" checked="true">
+                                                    Всі (<label id="total_count">@ViewBag.Count</label>)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="col-lg-12">
+
+                        <div id="trip_infos">
+                            @Html.Partial("ResultsPartial", (IEnumerable<HotCar.Entities.Trip>)@ViewBag.Data)
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="fade" id="scroll-to-top">
+            <i class="fa-icon-chevron-up"></i>
+        </div>
+    </div>
+</div>

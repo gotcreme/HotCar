@@ -1,0 +1,138 @@
+﻿@using System.Collections.Generic
+@using System.Globalization
+@using System.Web.Helpers
+@using System.Web.Optimization
+
+@model HotCar.WebUI.Frontend.Models.DirectionsRouteModel
+
+@{
+    ViewBag.Title = "SuggestTripNext";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+@section Scripts{
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&language=uk"></script>
+    @Scripts.Render("~/bundles/SuggestNext/scripts")
+}
+
+@using (Html.BeginForm("SuggestTripNext","SuggestTrip"@*, FormMethod.Get, new { @id = "suggetsNextForm" }*@))
+{
+    <input type="hidden" id="hiddenWayPoint0" value="@Model.WayPoints[0]" />
+    <input type="hidden" id="hiddenWayPoint1" value="@Model.WayPoints[1]" />
+    <input type="hidden" id="hiddenWayPoint2" value="@Model.WayPoints[2]" />
+    <input type="hidden" id="hiddenWayPoint3" value="@Model.WayPoints[3]" />
+    <input type="hidden" id="hiddenWayPoint4" value="@Model.WayPoints[4]" />
+    <input type="hidden" id="hiddenWayPoint5" value="@Model.WayPoints[5]" />
+    <input type="hidden" id="hiddenWayPoint6" value="@Model.WayPoints[6]" />
+    <input type="hidden" id="hiddenWayPoint7" value="@Model.WayPoints[7]" />
+
+    <div id='main' role='main'>
+        <div id='main-content'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        <div class='page-header page-header-with-icon no-mg-t'>
+                            <i class='fa-icon-th'></i>
+                            <h2>
+                                Інформація
+                            </h2>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-12'>
+                                <div class='panel panel-bordered mg-b'>
+                                    <div class='panel-heading' style="text-align: center;"> Ціна з пасажира </div>
+                                    <div class='panel-body'>
+                                        <div class='col-md-4' style="margin-left: -15px">
+                                            <h3>Ціна: </h3>
+                                        </div>
+                                        <div class='col-md-5'></div>
+                                        <div class='col-md-3' style="margin-top: 10px">
+                                            @Html.TextBoxFor((direction) => direction.Price, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row' style="margin-top: 10px;">
+                            <div class='col-lg-12'>
+                                <div class='panel panel-bordered mg-b'>
+                                    <div class='panel-body'>
+                                        <div class='col-md-4' style="margin-left: -15px">
+                                            <h3>Вільних місць: </h3>
+                                        </div>
+                                        <div class='col-md-5'></div>
+                                        <div class='col-md-3' style="margin-top: 10px">
+                                            @Html.TextBoxFor((direction) => direction.Free, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row' style="margin-top: 10px;">
+                            <div class='col-lg-12'>
+                                <div class='panel panel-bordered mg-b'>
+                                    <div class='panel-heading' style="text-align:center">Додаткова інформація</div>
+                                    <div class='panel-body'>
+                                        <p>Додайте деталей до опису поїздки - це допоможе уникнути численних запитань від пасажирів.</p>
+                                        <div class='mg-t '>
+                                            @Html.TextAreaFor((direction) => direction.AdditionalInfo, new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "Додайте більше інформації про вашу поїздку. Наприклад, про місце зустрічі, музику, яку слухаєте, про мету поїздки будь- яку корисну інформацію для пасажира.",
+                                            @rows = "4",
+                                            style = "resize: none;"
+                                        })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6'>
+                        <div class='page-header page-header-with-icon no-mg-t'>
+                            <i class='fa-icon-map-marker'></i>
+                            <h2>
+                                Маршрут
+                            </h2>
+                        </div>
+                        <div id="map-canvas" class="col-lg-12" style="height: 333px;"></div>
+                        <div class="col-lg-12">
+                            <div class='panel panel-bordered mg-t'>
+                                <div class='panel-body'>
+                                    <div style="text-align: center;">@Model.WayPoints[0]<i class='fa-icon-long-arrow-right text-contrast'></i>@Model.WayPoints[7]</div>
+                                    <div class="row" style="margin-top:10px;">
+                                        <div class="col-md-4">Дата відправлення: </div>
+                                        <div class="col-md-4">@Model.DateString</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">Відстань: </div>
+                                        <div class="col-md-4">@Model.Distanse</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">Час в дорозі: </div>
+                                        <div class="col-md-4">@Model.Duration</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='mg-b'></div>
+                        <div class='col-sm-3'></div>
+                        <div class='col-sm-4' style="margin-left: 20px">
+                            <a style="font-size: 18px;" href='@Url.Action("SuggestTrip")'> <i class='fa-icon-arrow-left'></i>&nbsp Назад</a>
+                            <input type="submit" id="SubmitAndRedirect" value="Опублікувати" style="margin-left: 19px" class="btn btn-contrast">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='fade' id='scroll-to-top'>
+                <i class='fa-icon-chevron-up'></i>
+            </div>
+        </div>
+    </div>
+}

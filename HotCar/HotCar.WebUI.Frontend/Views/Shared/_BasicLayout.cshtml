@@ -1,0 +1,283 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html lang='en'>
+<!-- <![endif] -->
+<head>
+    <meta http-equiv="charset" content="windws-1251">    
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta content="HotCar is Epam It Lab Team Project" name="description">
+    <meta content="HotCar Team" name="author">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    @RenderSection("Styles", required:false)
+    @Styles.Render("~/Content/jednotka/css")    
+    @Scripts.Render("~/bundles/common/scripts")
+    @RenderSection("Scripts", required: false)
+  
+    <link href="~/Content/jednotka/jednotka_green.css" id="colors" rel="stylesheet" />    
+</head>
+
+<body class="homepage">
+    <div id="wrapper">
+        <header id="header">
+            <div class="container">
+                <nav class="navbar navbar-default" id="nav" role="navigation">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target=".navbar-header-collapse" data-toggle="collapse" type="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                            <img alt="HotCar" width="117" height="29" src="@Url.Content("~/Content/images/HotCarLogo.gif")" />
+                        </a>
+                    </div>
+
+                    @if (!Request.IsAuthenticated)
+                    {
+                        @Html.Partial("LoginModal")
+                        <div class="collapse navbar-collapse navbar-header-collapse">
+                            <ul class='nav navbar-nav navbar-right'>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href=@Url.Action("SuggestTrip", "SuggestTrip")>
+                                        <span>
+                                            Запропонувати поїздку
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href=@Url.Action("Index", "FindTrip")>
+                                        <span>
+                                            Знайти поїздку
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href='#'>
+                                        <span>
+                                            Як це працює
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href=@Url.Action("Register", "Account")>
+                                        <span>
+                                            Реєстрація
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown' id="menuLogin">
+                                    <a class='dropdown-toggle' data-delay='50' data-toggle='dropdown' id="loginLink" href='#'>
+                                        <span>
+                                            Увійти
+                                            <i class='fa-icon-angle-down'></i>
+                                        </span>
+                                    </a>                                 
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="collapse navbar-collapse navbar-header-collapse">
+                            <ul class='nav navbar-nav navbar-right'>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' data-toggle='dropdown' href='#'>
+                                    </a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href=@Url.Action("SuggestTrip", "SuggestTrip")>
+                                        <span>
+                                            Запропонувати поїздку
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href=@Url.Action("Index", "FindTrip")>
+                                        <span>
+                                            Знайти поїздку
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a class='dropdown-toggle' data-delay='50' href='#'>
+                                        <span>
+                                            Як користуватися?
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class='dropdown' id="menuLogout">
+                                    <a class='dropdown-toggle' data-delay='50' data-toggle='dropdown' href='#'>
+                                        <span>
+                                            <img src="@Url.Action("UserPhoto", "Layout")" class="img-circle" alt=@Html.Encode((User.Identity.Name)) width="60" height="60">
+                                            <i class='fa-icon-angle-down'></i>
+                                        </span>
+                                    </a>
+                                    <ul class='dropdown-menu' role='menu'>
+                                        <li class=''>
+                                            <a href=@Url.Action("Index", "UserAccount")>Мій кабінет</a>
+                                        </li>
+                                        <li class=''>
+                                            <a href='#'>Мої поїздки</a>
+                                        </li>
+                                        <li class=''>
+                                            <a href='#'>Відгуки</a>
+                                        </li>
+                                        <li class=''>
+                                            @Html.ActionLink("Вийти", "Logout", "Account")
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </nav>
+            </div>
+        </header>
+        @RenderBody()       
+        <footer id='footer'>
+            <div id='footer-main'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-md-4 col-sm-6 info-box'>
+                            <div class='logo-container'>
+                                <img alt="HotCar" width="117" height="29" src="@Url.Content("~/Content/images/HotCarLogo.gif")" />
+                            </div>
+                            <div class='content'>
+                                <p class='no-mg-b'>Спільнота попутників, майданчик, що об'єднує водіїв і пасажирів, яким по дорозі.</p>
+                            </div>
+                        </div>
+                        <div class='col-md-2 col-sm-6 info-box'>
+                            <h2 class='title'>Наша компанія</h2>
+                            <div class='icon-boxes'>
+                                <div class='icon-box'>
+                                    <div class='content'>
+                                        <a href="#">Про нас</a>
+                                    </div>
+                                </div>
+                                <div class='icon-box'>
+                                    <div class='content'>
+                                        <a href="#">Як це працює</a>
+                                    </div>
+                                </div>
+                                <div class='icon-box'>
+                                    <div class='content'>
+                                        <a href="#">Питання та відповіді</a>
+                                    </div>
+                                </div>
+                                <div class='icon-box'>
+                                    <div class='content'>
+                                        <a href="#">Зв'яжіться з нами</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-3 col-sm-6 info-box'>
+                            <h2 class='title'>Контакти</h2>
+                            <div class='icon-boxes'>
+                                <div class='icon-box'>
+                                    <div class='icon icon-wrap'>
+                                        <i class='fa-icon-map-marker'></i>
+                                    </div>
+                                    <div class='content'>
+                                        Вул. Володимира Великого, 45.
+                                        <br>
+                                        Львів, Україна
+                                    </div>
+                                </div>
+                                <div class='icon-box'>
+                                    <div class='icon icon-wrap'>
+                                        <i class='fa-icon-phone'></i>
+                                    </div>
+                                    <div class='content'>
+                                        <a href='tel:+012456789'>+012 456 789</a>
+                                    </div>
+                                </div>
+                                <div class='icon-box'>
+                                    <div class='icon icon-wrap'>
+                                        <i class='fa-icon-envelope'></i>
+                                    </div>
+                                    <div class='content'><a href="mailto:hotcarservice@gmail.com">hotcarservice@gmail.com</a></div>
+                                </div>
+                                <div class='icon-box'>
+                                    <div class='icon icon-wrap'>
+                                        <i class='fa-icon-globe'></i>
+                                    </div>
+                                    <div class='content'><a href="#">www.hotcar.com</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-3 col-sm-6 info-box'>
+                            <h2 class='title'>Підписка</h2>
+                            <p>Вкажіть свій електронний адрес, щоб бути в курсі наших останніх новин.</p>
+                            <form action='' class='form-inline form-validation' method='get'>
+                                <div class='row'>
+                                    <div class='form-group control-group col-xs-9 col-md-8 col-lg-9'>
+                                        <input class='form-control' data-rule-email='true' data-rule-required='true' id='newsletter_email' name='newsletter[email]' placeholder='Email address' type='email'>
+                                    </div>
+                                    <div class='col-xs-3 col-md-4 col-lg-3'>
+                                        <button class='btn btn-medium-light btn-block' type='submit'>
+                                            <i class='fa-icon-reply text-white'></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='footer-copyright'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-lg-12 clearfix'>
+                            <p class='copyright'>
+                                Copyright
+                                &copy;
+                                2015 HotCar Team
+                            </p>
+                            <div class='links'>
+                                <a class='btn btn-circle btn-medium-light btn-sm' href='#'>
+                                    <i class='fa-icon-vk text-dark'></i>
+                                </a>
+                                <a class='btn btn-circle btn-medium-light btn-sm' href='#'>
+                                    <i class='fa-icon-facebook text-dark'></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="style-switcher" id="style-switcher">
+        <div class="style-switcher-heading">
+            Змінити тему
+            <i class="fa-icon-cogs"></i>
+        </div>
+        <div class="style-switcher-body">
+            <div class="style-switcher-colors">
+                <div class="style-switcher-title">Кольори</div>
+                <a class="style-switcher-color orange" data-switch-target="#colors" data-switch-to="jednotka_orange.css" href="#"></a>
+                <a class="style-switcher-color blue" data-switch-target="#colors" data-switch-to="jednotka_blue.css" href="#"></a>
+                <a class="style-switcher-color green active" data-switch-default data-switch-target="#colors" data-switch-to="jednotka_green.css" href="#"></a>
+                <a class="style-switcher-color salmon" data-switch-target="#colors" data-switch-to="jednotka_salmon.css" href="#"></a>
+                <a class="style-switcher-color mint" data-switch-target="#colors" data-switch-to="jednotka_mint.css" href="#"></a>
+                <a class="style-switcher-color red" data-switch-target="#colors" data-switch-to="jednotka_red.css" href="#"></a>
+            </div>
+            <div class="style-switcher-layouts">
+                <div class="style-switcher-title">Тип шаблону</div>
+                <a class="style-switcher-button active" data-switch-default data-switch-target="body" data-switch-to="removeClass:boxed" href="#">Повний</a>
+                <a class="style-switcher-button" data-switch-target="body" data-switch-to="addClass:boxed" href="#">Рамка</a>
+            </div>
+            <div class="style-switcher-reset">
+                <a class="style-switcher-button" data-switch-target="#style-switcher" data-switch-to="reset:defaults" href="#">Скинути налаштування</a>
+            </div>
+        </div>
+</div>
+    @Html.RenderScripts()
+</body>
+</html>

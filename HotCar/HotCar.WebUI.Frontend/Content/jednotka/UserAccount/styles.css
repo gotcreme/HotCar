@@ -1,0 +1,197 @@
+﻿.container {
+    display: block;
+}
+
+#user-photo {
+    height: 300px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: none;
+    transform: rotate(-3deg);
+    border-radius: 10px;
+}
+
+
+.appl-menu,
+.settings-menu,
+.trips-menu,
+.comments-menu {
+    background-color: #66CDAA;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    line-height: 40px;
+    position: absolute;
+    right: -60px;
+    border-right: 10px;
+    width: 80px;
+    height: 40px;
+    color: #FFF;
+    font-size: 30px;
+    transition: right 150ms, left 300ms ease-out;
+}
+
+.selected-menu{
+     right: -80px;
+     text-align: center;
+}
+
+.tabs {
+    font-size: 14pt;
+}
+
+.appl-menu {
+    text-indent: 20px;
+    font-size: 27px;
+    top: 380px;
+}
+
+.settings-menu {
+    text-indent: 19px;
+    top: 170px;
+    font-size: 30px;
+}
+
+.trips-menu {
+    text-indent: 20px;
+    top: 310px;
+    font-size: 30px;
+}
+
+.comments-menu {
+    text-indent: 20px;
+    top: 240px;
+    font-size: 30px;
+}
+
+.settings-menu:hover,
+.appl-menu:hover,
+.trips-menu:hover,
+.comments-menu:hover {
+    right: -80px;
+    text-align: center;
+}
+
+.user-info {
+    font-size: 12pt;
+}
+
+.user-name {
+    font-size: 15pt;
+}
+.user-status-info {
+    font-size: 14pt;
+}
+
+#about-user {
+    font-size: 10pt;
+}
+
+#about-user-picture {
+    font-size: 14pt;
+}
+
+.trips-info {
+    position: relative;
+    left: 30px;
+}
+
+.hide-content {
+    display: none;
+}
+
+.selected-menu {
+    right: -80px;
+    text-align: center;
+}
+
+.current-active-menu {
+    font-size: 30pt;
+    text-align: center;
+}
+
+.current-menu-active-picture {
+    font-size: 40pt;
+}
+
+.animation, .animation-comments {
+    transition-timing-function: ease-in;
+    transition: 0.7s;
+    transition-delay: 0s;
+}
+
+.animation:hover {
+    transform: scale(1.08);
+    transition-timing-function: ease-out;
+    transition: 1s;
+    transition-delay: 1s;
+}
+
+.animation-comments:hover {
+    transform: scale(1.05);
+    transition-timing-function: ease-out;
+    transition: 1s;
+    transition-delay: 0.2s;
+}
+
+.user-page-content {
+    width: 80%;
+    left: 10%;
+    position: relative;
+}
+
+.user-account-short-info {
+    width: 100%;
+    position: relative;
+    background-color: white;
+    left: 5%;
+    background-color: white;
+}
+
+.all-content {
+    background-color: white;
+}
+
+.settings-content {
+    position: relative;
+    left: 7%;
+}
+
+.comments-participants-count {
+    text-align: right;
+}
+
+.trip-date-block {
+    float: right;
+    font-size: 16pt;
+}
+
+.trip-time-block {
+    position: absolute;
+    right: 30%;
+    font-size: 16pt;
+}
+
+.trip-more {
+    font-size: 15pt;
+    position: relative;
+    float: right;
+}
+
+.cost-block {
+    font-size: 14pt;
+}
+
+.cost {
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.appl-trip-more {
+    float: left;
+}
+
+.appl-trip-detail {
+    font-size: 14pt;
+    font-weight: bolder;
+}

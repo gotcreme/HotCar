@@ -1,0 +1,67 @@
+﻿@model HotCar.WebUI.Frontend.Models.LoginModel
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddScriptFile("~/Scripts/Pages/Login/login-modal.js");
+}
+
+@{
+    ViewBag.Title = "LoginModal";
+    ViewBag.ModalId = "ModalLogin";
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "loginform" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                <div class="alert alert-danger" role="alert" style="display: none" id="alertBox"></div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn btn-contrast btn-block" id="btnLogin">Log in</button>
+                    </div>
+                </div>
+                <div class="col-md-offset-3 col-md-9">
+                    @Html.ActionLink("Register as a new user", "Register", "Account")
+                </div>
+                @*Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+            <section id="socialLoginForm">
+                <h4>Use another service to log in....</h4>
+            </section>
+        </div>
+</div>
+

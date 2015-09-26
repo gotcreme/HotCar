@@ -1,0 +1,172 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "HotCar - Простий пошук попутників";
+    Layout = "../Shared/_BasicLayout.cshtml";
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/HomePage/scripts")
+}
+
+<div id='main' role='main'>
+    <div class='carousel-blur flexslider' id='carousel-example-1'>
+        <ul class='slides'>
+            <li class='item'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-lg-12 animate'>
+                            <h1 class='big fadeInUp animated'>
+                                Об'єднуємо водіїв і пасажирів
+                            </h1>
+                            <p class='normal fadeInUp animated'>Подорожуйте дешевше.</p>
+                            <a class='btn btn-contrast btn-lg fadeInRight animated' href='#'>
+                                Детальніше
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class='item'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-lg-12 animate'>
+                            <h2 class='big fadeInLeftBig animated'>
+                                Ви водій? Запропонуйте поїздку
+                            </h2>
+                            <a class='btn btn-contrast btn-lg fadeInDownBig animated' href=@Url.Action("SuggestTrip", "SuggestTrip")>
+                                Запропонувати поїздку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class='item'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-lg-12 animate'>
+                            <h2 class='big fadeInRightBig animated'>Спільнота надійних попутників</h2>
+                            <p class='normal fadeInLeftBig animated'>Підтверджені профілі, оцінки та відгуки</p>
+                            <a class='btn btn-contrast btn-lg fadeInUpBig animated' href='#'>
+                                Детальніше
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id='main-content'>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <p class='lead lead-lg text-center'>Вибирайте з тисяч пропозицій по будь-яких напрямах по всій Україні: це просто, надійно і майже вдвічі дешевше, ніж поїздом!</p>
+                </div>
+            </div>
+            <div class='row panels'>
+                <div class='col-sm-4 panel-item'>
+                    <a class='panel panel-image' href='#'>
+                        <div class='panel-icon'>
+                            <i class='fa-icon-dollar'></i>
+                        </div>
+                        <div class='panel-heading'><img class="img-responsive-sm" alt="Project planning" width="768" height="300" src="../Content/images/Panels/driver.jpg" /></div>
+                        <div class='panel-body'>
+                            <h3 class='panel-title'>Водії: скоротіть витрати на поїздки</h3>
+                            <p>Їздити поодинці дорого і нудно! Дозвольте попутникам сплачувати за ваше паливо.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class='col-sm-4 panel-item'>
+                    <a class='panel panel-image' href='#'>
+                        <div class='panel-icon'>
+                            <i class='fa-icon-time'></i>
+                        </div>
+                        <div class='panel-heading'><img class="img-responsive-sm" alt="Easy customizable" width="768" height="300" src="../Content/images/Panels/passengers.jpg" /></div>
+                        <div class='panel-body'>
+                            <h3 class='panel-title'>Пасажири: подорожуйте швидше</h3>
+                            <p>Бронюйте місця і подорожуйте швидше з надійними водіями!</p>
+                        </div>
+                    </a>
+                </div>
+                <div class='col-sm-4 panel-item'>
+                    <a class='panel panel-image' href='#'>
+                        <div class='panel-icon'>
+                            <i class='fa-icon-group'></i>
+                        </div>
+                        <div class='panel-heading'><img class="img-responsive-sm" alt="Fastest workers" width="768" height="300" src="../Content/images/Panels/friendship.jpg" /></div>
+                        <div class='panel-body'>
+                            <h3 class='panel-title'>Спільні поїздки: надійність і довіра</h3>
+                            <p>Профілі користувачів із взаємними відгуками формують надійну спільноту.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <div class='page-header page-header-with-icon'>
+                        <i class='fa-icon-quote-right'></i>
+                        <h2>Відгуки про нас</h2>
+                    </div>
+                    <div class='row quotes'>
+                        <div class='carousel carousel-default slide carousel-auto' id='carousel-testimonials'>
+                            <div class='carousel-inner'>
+                                <div class='item active quote'>
+                                    <div class='col-sm-12 text-center'>
+                                        <p class='lead'>За останній місяць я здійснила вже 4 чудові поїздки за допомогою HotCar. Я - пасажир. Мені подобається даний сервіс тим, що тим сам обираєш машину та водія з яким тобі їхати.</p>
+                                        <div class='author-wrapper'>
+                                            <p class='author'>
+                                                <strong>Ірина</strong>,
+                                                32 роки
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='item quote'>
+                                    <div class='col-sm-12 text-center'>
+                                        <p class='lead'>Цей сайт чудова знахідка для тих, хто любить часто подорожувати. Зручно, легко та дешево!</p>
+                                        <div class='author-wrapper'>
+                                            <p class='author'>
+                                                <strong>Дмитро</strong>,
+                                                27 років
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='item quote'>
+                                    <div class='col-sm-12 text-center'>
+                                        <p class='lead'>Я просто в захваті від простоти та зручності даного сервісу. Основними перевагами для мене є: економія, ймовірність знайти хорошого співрозмовника, зручність сайту.</p>
+                                        <div class='author-wrapper'>
+                                            <p class='author'>
+                                                <strong>Катерина</strong>,
+                                                23 роки
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='item quote'>
+                                    <div class='col-sm-12 text-center'>
+                                        <p class='lead'>Відмінний сервіс, рятує у найскладнішій ситуації! Коли запізнився на потяг, коли терміново потрібно добратися від точки A до точки B, коли грошей "в обріз", виїхати можна в будь-який час і в будь-якому напрямку.</p>
+                                        <div class='author-wrapper'>
+                                            <p class='author'>
+                                                <strong>Максим</strong>,
+                                                25 років
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ol class='carousel-indicators'>
+                                <li class='active' data-slide-to='0' data-target='#carousel-testimonials'></li>
+                                <li data-slide-to='1' data-target='#carousel-testimonials'></li>
+                                <li data-slide-to='2' data-target='#carousel-testimonials'></li>
+                                <li data-slide-to='3' data-target='#carousel-testimonials'></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='fade' id='scroll-to-top'>
+        <i class='fa-icon-chevron-up'></i>
+    </div>
+</div>

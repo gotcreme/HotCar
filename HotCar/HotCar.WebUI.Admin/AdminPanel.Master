@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminPanel.master.cs" Inherits="HotCar.WebUI.Admin.AdminPanel" %>
+
+<%@ Register Src="~/Controls/Menu.ascx" TagPrefix="uc1" TagName="Menu" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>HotCar</title>
+    <script type="text/javascript" src="../Scripts/Libs/jquery.1.4.2.js"></script>
+    <script type="text/javascript" src="../Scripts/Libs/jquery.min.js"></script>
+	<script src="../Scripts/Libs/jquery.jclock-1.2.0.js" type="text/javascript"></script>   
+    <script type="text/javascript">
+        $(function ($) {
+            $('.jclock').jclock();
+        });
+	</script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div class="background_overlay">
+		    <div class="background">		
+			    <!--Wrapper -->
+			    <div class="wrapper">
+			
+				    <!--Header -->
+				    <header>
+					    <a href="" class="logo"></a>
+					    <div class="description"> <asp:Label ID="lblFaster" runat="server" Text="It's faster with us" meta:resourcekey="lblFasterResource1"></asp:Label></div>		
+                        <uc1:Menu runat="server" ID="Menu" />	
+                        <div class="jclock"></div>							
+					    <div class="clear"></div>
+				    </header>
+				    <!-- END OF: Header -->
+				
+				    <div class="line"></div>
+				    <div class="clear"></div>
+			    </div>			
+			    <!-- END OF: Wrapper -->
+
+                 <div class="wrapper2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">      
+                    </asp:ContentPlaceHolder>
+                </div>
+    
+                <!--WRAPPER -->
+			    <div class="wrapper">																		
+								
+				    <footer>			
+					    Copyright © All Rights Reserved 2015. HotCar Team.  						
+					    <div class="clear"></div>					
+				    </footer>
+				
+			    </div>
+			    <!-- END OF: Wrapper -->
+                </div>
+        </div>
+    </form>
+    </body>
+</html>

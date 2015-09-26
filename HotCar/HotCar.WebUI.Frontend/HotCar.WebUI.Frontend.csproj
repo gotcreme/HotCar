@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DA37A689-6CB1-478C-9F2A-42D3FE676F00}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HotCar.WebUI.Frontend</RootNamespace>
+    <AssemblyName>HotCar.WebUI.Frontend</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Forloop.HtmlHelpers">
+      <HintPath>..\packages\Forloop.HtmlHelpers.1.2.0.0\lib\net45\Forloop.HtmlHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\GoogleMapsApi.0.41.0.0\lib\net45\GoogleMapsApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\jquery-ui.css" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\ajax-loader[1].gif" />
+    <Content Include="Content\images\bg_wrapper.jpg" />
+    <Content Include="Content\images\FindTrip\map.png" />
+    <Content Include="Content\images\no-user-photo.png" />
+    <Content Include="Content\images\Panels\driver.jpg" />
+    <Content Include="Content\images\Panels\friendship.jpg" />
+    <Content Include="Content\images\HotCarLogo.gif" />
+    <Content Include="Content\images\Panels\passengers.jpg" />
+    <Content Include="Content\jednotka\demo.css" />
+    <Content Include="Content\jednotka\FindTrip\Results.css" />
+    <Content Include="Content\jednotka\jednotka_blue.css" />
+    <Content Include="Content\jednotka\jednotka_green.css" />
+    <Content Include="Content\jednotka\jednotka_mint.css" />
+    <Content Include="Content\jednotka\jednotka_orange.css" />
+    <Content Include="Content\jednotka\jednotka_red.css" />
+    <Content Include="Content\jednotka\jednotka_salmon.css" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\jednotka\Login\form-elements.css" />
+    <Content Include="Content\jednotka\Login\style.css" />
+    <Content Include="Content\jednotka\UserAccount\styles.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\font-awesome\Descr.WD3" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.eot%40" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfontf77b.eot" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfontf77b.ttf" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfontf77b.woff" />
+    <None Include="Properties\PublishProfiles\HotCar.pubxml" />
+    <None Include="Scripts\Libs\jquery\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\Libs\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\Libs\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\Pages\FindTrip\trip_detail-page.js" />
+    <Content Include="Scripts\Pages\Layout\style-switcher.js" />
+    <Content Include="Scripts\Pages\FindTrip\index-page.js" />
+    <Content Include="Scripts\Libs\bootstrap\jednotka.js" />
+    <None Include="Scripts\Libs\jquery\plugins\jquery.validate-vsdoc.js" />
+    <Content Include="Content\bootstrap\jquery.timepicker.css" />
+    <Content Include="Scripts\Pages\FindTrip\results-page.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery-ui.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.timepicker.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.validate.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Libs\jquery\jquery-1.9.1.js" />
+    <Content Include="Scripts\Libs\jquery\jquery.mobile.custom.min.js" />
+    <Content Include="Scripts\Pages\Login\login-modal.js" />
+    <Content Include="Scripts\Pages\Login\login-page.js" />
+    <Content Include="Scripts\Libs\plugins\countdown.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.cycle.all.min.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.flexslider.min.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.isotope.min.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.isotope.sloppy-masonry.min.js" />
+    <Content Include="Scripts\Libs\jquery\plugins\jquery.knob.js" />
+    <Content Include="Scripts\Libs\plugins\lightbox.min.js" />
+    <Content Include="Scripts\Libs\plugins\modernizr.custom.min.js" />
+    <Content Include="Scripts\Libs\plugins\retina.min.js" />
+    <Content Include="Scripts\Libs\plugins\twitter-bootstrap-hover-dropdown.min.js" />
+    <Content Include="Scripts\Pages\SuggestTrip\suggestTrip-page.js" />
+    <Content Include="Scripts\Pages\SuggestTrip\suggestTripNext-page.js" />
+    <Content Include="Scripts\Pages\UserAccount\userAccount.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Code\SessionKeys.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FindTripController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
+    <Compile Include="Controllers\SuggestTripController.cs" />
+    <Compile Include="Code\Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DirectionsRouteModel.cs" />
+    <Compile Include="Models\FiltersModel.cs" />
+    <Compile Include="Models\FindTripModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\_BasicLayout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\FindTrip\Results.cshtml" />
+    <Content Include="Views\FindTrip\Index.cshtml" />
+    <Content Include="Views\FindTrip\ResultsPartial.cshtml" />
+    <Content Include="Views\SuggestTrip\SuggestTrip.cshtml" />
+    <Content Include="Views\SuggestTrip\SuggestTripNext.cshtml" />
+    <Content Include="Views\FindTrip\TripDetail.cshtml" />
+    <Content Include="Views\UserAccount\Index.cshtml" />
+    <Content Include="Views\Shared\LoginModal.cshtml" />
+    <Content Include="Views\Shared\_LayoutModal.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\images\UserAccount\" />
+    <Folder Include="Views\Layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotCar.BLL\HotCar.BLL.csproj">
+      <Project>{e68aa926-76be-42c6-b539-ac26e59cad78}</Project>
+      <Name>HotCar.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotCar.Entities\HotCar.Entities.csproj">
+      <Project>{e68c112a-a8e1-49ae-9ff1-57b44504868f}</Project>
+      <Name>HotCar.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotCar.Repositories\HotCar.Repositories.csproj">
+      <Project>{83afb32f-5967-466b-a6af-76744bd76959}</Project>
+      <Name>HotCar.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10848</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:10753/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

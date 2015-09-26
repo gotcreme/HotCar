@@ -1,0 +1,97 @@
+﻿@using System.Web.Optimization
+@using System.Web.Script.Services
+@model HotCar.WebUI.Frontend.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+@section Styles{
+    @Styles.Render("~/Content/jednotka/login/css")
+}
+@section Scripts{
+    @Styles.Render("~/bundles/Login/scripts")
+}
+
+<div id="main" role="main">
+    <div class="top-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Sign UP</h3>
+                            <p>Enter your username and password to log on:</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-bottom">
+                        @using (Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl, @class = "form form-validation", id = "RegisterForm"}))
+                        {
+                            <div class='row'>
+                                <div class='col-sm-6'>
+                                    <div class='form-group control-group'>
+                                        @Html.TextBoxFor(u => u.FirstName, new {@class = "form-control", placeholder = "FirstName...", name = "form-username"})
+                                        @Html.ValidationMessageFor(u => u.FirstName)
+                                    </div>
+                                </div>
+                                <div class='col-sm-6'>
+                                    <div class='form-group control-group'>
+                                        @Html.TextBoxFor(u => u.LastName, new {@class = "form-control", placeholder = "LastName...", name = "form-username"})
+                                        @Html.ValidationMessageFor(u => u.LastName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-sm-6'>
+                                    <div class='form-group control-group'>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(u => u.UserName, new {@class = "form-control", placeholder = "Username...", name = "form-username"})
+                                            @Html.ValidationMessageFor(u => u.UserName)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6'>
+                                    <div class='form-group control-group'>
+                                        @Html.TextBoxFor(u => u.Email, new {@class = " form-control", placeholder = "Email...", name = "form-username"})
+                                        @Html.ValidationMessageFor(u => u.Email)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-sm-6'>
+                                    <div class='form-group control-group'>
+                                        @Html.PasswordFor(u => u.Password, new {@class = " form-control", placeholder = "Password...", name = "form-username"})
+                                        @Html.ValidationMessageFor(u => u.Password)
+                                    </div>
+                                </div>
+                                <div class='col-sm-6'>
+                                    <div class='form-group control-group'>
+                                        @Html.PasswordFor(u => u.Password, new {@class = " form-control", name = "form-password", placeholder = "Confirm-Password..."})
+                                        @Html.ValidationMessageFor(u => u.Password)
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ValidationSummary(true)
+                            <button class='btn btn-contrast btn-block' type='submit'>
+                                Sign UP
+                            </button>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="fade" id="scroll-to-top">
+        <i class="fa-icon-chevron-up"></i>
+    </div>
+</div>
+
+
+
+

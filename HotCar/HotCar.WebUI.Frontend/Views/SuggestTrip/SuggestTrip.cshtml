@@ -1,0 +1,220 @@
+﻿@using System.Collections.Generic
+@using System.Globalization
+@using System.Web.Optimization
+@using HotCar.WebUI.Frontend.Models
+
+@model HotCar.WebUI.Frontend.Models.DirectionsRouteModel
+
+@{
+    ViewBag.Title = "SuggestTrip";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+@section Scripts{
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=uk"></script>
+    @Scripts.Render("~/bundles/SuggestPage/scripts")
+}
+@section Styles{
+    @Styles.Render("~/Content/jednotka/suggest/css")
+}
+
+<div id='main' role='main'>
+    <div id='main-content-header'>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <h1 class='title'>
+                        Запропонувати поїздку
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("SuggestTrip", "SuggestTrip", FormMethod.Post, new { @id = "suggestForm" }))
+    {
+        <div id='main-content'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        <div class='page-header page-header-with-icon no-mg-t'>
+                            <i class='fa-icon-th'></i>
+                            <h2>
+                                Інформація
+                            </h2>
+                        </div>
+                        
+                        <div class='row' style="margin-top: 10px;">
+                            <div class='col-lg-12'>
+                                <div class='panel panel-bordered mg-b'>
+                                    <div class='panel-heading' style="text-align: center">Пункти посадки і висадки</div>
+                                    <div class='panel-body'>
+                                        <div class='form-group'>
+                                            <label>Відправлення</label>
+                                            @Html.TextBoxFor((direction) => direction.WayPoints[0], new { @id = "wayPoint0", @class = "form-control", placeholder = "Пункт відправлення", oninput = "CheckInput();" })
+                                        </div>
+                                        <div class='form-group'>
+                                            <label>Прибуття</label>
+                                            @Html.TextBoxFor((direction) => direction.WayPoints[7], new { @id = "wayPoint7", @class = "form-control", placeholder = "Пункт прибуття", oninput = "CheckInput();" })
+                                        </div>
+                                        <div class='form-group'>
+                                            <h3>Проміжні пункти</h3>
+                                            <p>Обов'язково добавте проміжні пункти, які ви будете проїжджати. Це дуже важливо для пошуку пасажирів.</p>
+                                            <div style="margin-top: 10px; width: 250px;">
+                                                @Html.TextBoxFor((direction) => direction.WayPoints[1], new
+                                            {
+                                                @id = "wayPoint1",
+                                                @class = "form-control",
+                                                placeholder = "Проміжний пункт 1",
+                                                oninput = "CheckInput();"
+                                            })
+                                                @Html.TextBoxFor((direction) => direction.WayPoints[2], new
+                                            {
+                                                @id = "wayPoint2",
+                                                @class = "form-control",
+                                                placeholder = "Проміжний пункт 2",
+                                                oninput = "CheckInput();",
+                                                style = "margin-top: 5px;"
+                                            })
+                                                @Html.TextBoxFor((direction) => direction.WayPoints[3], new
+                                            {
+                                                @id = "wayPoint3",
+                                                @class = "form-control",
+                                                placeholder = "Проміжний пункт 3",
+                                                oninput = "CheckInput();",
+                                                style = "margin-top: 5px;"
+                                            })
+                                                @Html.TextBoxFor((direction) => direction.WayPoints[4], new
+                                            {
+                                                @id = "wayPoint4",
+                                                @class = "form-control",
+                                                placeholder = "Проміжний пункт 4",
+                                                oninput = "CheckInput();",
+                                                style = "margin-top: 5px;"
+                                            })
+                                                @Html.TextBoxFor((direction) => direction.WayPoints[5], new
+                                            {
+                                                @id = "wayPoint5",
+                                                @class = "form-control",
+                                                placeholder = "Проміжний пункт 5",
+                                                oninput = "CheckInput();",
+                                                style = "margin-top: 5px;"
+                                            })
+                                                @Html.TextBoxFor((direction) => direction.WayPoints[6], new
+                                            {
+                                                @id = "wayPoint6",
+                                                @class = "form-control",
+                                                placeholder = "Проміжний пункт 6",
+                                                oninput = "CheckInput();",
+                                                style = "margin-top: 5px;"
+                                            })
+                                            </div>
+                                            <div style="margin-top: 10px;">
+                                                <a href="">+ Додати проміжний пункт</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row' style="margin-top: 10px;">
+                            <div class='col-lg-12'>
+                                <div class='panel panel-bordered mg-b'>
+                                    <div class='panel-heading' style="text-align: center">Дата і час</div>
+                                    <div class='panel-body'>
+                                        <div class='row'>
+                                            <div class='col-md-3'>
+                                                <div class='form-group control-group' style="width: 200px;">
+                                                    @Html.TextBoxFor((direction) => direction.Date, new
+                                                {
+                                                    @id = "dateTime",
+                                                    @class = "form-control",
+                                                    type = "hidden"
+                                                })
+                                                    <label>Дата відправлення:</label>
+                                                    <input type="text" id="date" class="form-control date" placeholder="Дата відправлення" />
+                                                </div>
+                                            </div>
+                                            <div class='col-md-2'></div>
+                                            <div class='col-md-3'>
+                                                <div class='form-group control-group' style="width: 70px; margin-left: -20px;">
+                                                    <label for='input-select'>&nbsp</label>
+                                                    <select class='form-control date' id="hour">
+                                                        <option value="" selected disabled></option>
+                                                        <option>00</option>
+                                                        <option>01</option>
+                                                        <option>02</option>
+                                                        <option>03</option>
+                                                        <option>04</option>
+                                                        <option>05</option>
+                                                        <option>06</option>
+                                                        <option>07</option>
+                                                        <option>08</option>
+                                                        <option>09</option>
+                                                        <option>10</option>
+                                                        <option>11</option>
+                                                        <option>12</option>
+                                                        <option>13</option>
+                                                        <option>14</option>
+                                                        <option>15</option>
+                                                        <option>16</option>
+                                                        <option>17</option>
+                                                        <option>18</option>
+                                                        <option>19</option>
+                                                        <option>20</option>
+                                                        <option>21</option>
+                                                        <option>22</option>
+                                                        <option>23</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class='col-md-3'>
+                                                <div class='form-group control-group' style="width: 70px; margin-left: -70px;">
+                                                    <label for='input-select'>&nbsp</label>
+                                                    <select class='form-control date' id="minute">
+                                                        <option value="" selected disabled></option>
+                                                        <option>00</option>
+                                                        <option>10</option>
+                                                        <option>20</option>
+                                                        <option>30</option>
+                                                        <option>40</option>
+                                                        <option>50</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6'>
+                        <div class='page-header page-header-with-icon no-mg-t'>
+                            <i class='fa-icon-map-marker'></i>
+                            <h2>
+                                Маршрут
+                            </h2>
+                        </div>
+                        <div id="map-canvas" class="col-lg-12" style="height: 360px;"></div>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='mg-b'></div>
+                        <div class='col-sm-4'></div>
+                        <div class='col-sm-4' style="margin-left: 30px;">
+                            <input type="submit" id="SubmitAndRedirect" value="Продовжити" class="btn btn-contrast">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='fade' id='scroll-to-top'>
+                <i class='fa-icon-chevron-up'></i>
+            </div>
+        </div>
+    }
+
+</div>

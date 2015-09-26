@@ -1,0 +1,24 @@
+﻿.ui-slider .ui-slider-handle:focus {
+    outline: none;
+}
+
+.trip-info:hover {
+    background-color: #eaedf2;
+    cursor: pointer;
+}
+
+#dp2 {
+    width: 228.5px;
+}
+
+#dataclear {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    height: 18px;
+    margin: auto;
+    font-size: 18px;
+    cursor: pointer;
+    color: #ccc;
+}

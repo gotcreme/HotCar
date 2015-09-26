@@ -1,0 +1,133 @@
+﻿@using System
+@model System.Collections.Generic.IEnumerable<HotCar.Entities.Trip>
+
+<h2 class="no-mg-t">Знайдено: <span id="all_trips_count">@ViewBag.Count</span> поїздок</h2>
+
+<input type="hidden" id="noSeatsNum" value="@ViewBag.NoSeatsCount" />
+<input type="hidden" id="PhotoNum" value="@ViewBag.PhotoCount" />
+<input type="hidden" id="TotalNum" value="@ViewBag.WithWithoutPhotoCount" />
+<input type="hidden" id="currPage" value="@ViewBag.Page" />
+
+@foreach (var TripInfo in Model)
+{
+    <div class='panel trip-info' id="@TripInfo.Id">
+        <div class='panel-body'>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6 col-xs-3">
+                        @if (TripInfo.Driver.Photo.Photo == null)
+                        {
+                            <div class='icon icon-wrap icon-circle icon-lg' style="background-color: #eaedf2; width: 100px; height: 100px;">
+                                <div style="position: relative; top: 50%; transform: translateY(-50%);">
+                                    <i class='fa-icon-user contrast'></i>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <img alt="@TripInfo.Driver.FirstName" width="100" height="100" class="img-circle img-responsive" src="@TripInfo.Driver.PhotoFormatted" />
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        <p>@TripInfo.Driver.FirstName @TripInfo.Driver.SurName[0].</p>
+                        @if (TripInfo.Driver.Birthday != null) { 
+                            <p>вік: @TripInfo.Driver.Age</p>
+                        }
+                        <div style="font-size: 11px; margin-top: 30px;">
+                            <i class="fa-icon-star text-contrast"></i>
+                            <span>
+                                немає відгуків
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>@TripInfo.TripTime.ToShortDateString() - @TripInfo.TripTime.ToShortTimeString()</h4>
+                        <div style="font-size: 13px; padding-top: 10px;">
+                            <i class="fa-icon-circle-blank text-contrast"></i> @TripInfo.LocationAddresses[0] <br />
+                            <i class="fa-icon-circle-blank text-contrast"></i> @TripInfo.LocationAddresses[@TripInfo.LocationAddresses.Count - 1]
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="no-mg-t no-mg-b">@Decimal.ToInt32(TripInfo.CostOneSeat) ₴</h1>
+                        <p>з пасажира</p>
+
+                        @if (TripInfo.AvailablePlacesCount == 0)
+                        {
+                            <div class="mg-t"><h3>Заповнений</h3></div>
+                        }
+                        else
+                        {
+                            <div class="mg-t" style="font-size: 13px;">
+                                <p>
+                                    <span style="font-size: 20px;"> @TripInfo.AvailablePlacesCount </span>
+                                    @if (TripInfo.AvailablePlacesCount == 1)
+                                    {
+                                        @:місце
+                                                            }
+                                    else if (TripInfo.AvailablePlacesCount <= 4)
+                                    {
+                                        @:місця
+                                    }
+                                    else
+                                    {
+                                        @:місць
+                                    }
+                                    залишилося
+                                </p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class='text-right'>
+    <ul class='pagination'>
+
+        @if (@ViewBag.Page > 0)
+        {
+            <li id="prev_page">
+                <a href=''>
+                    <i class='fa-icon-angle-left'></i>
+                </a>
+            </li>
+        }
+
+        @if (@ViewBag.MaxPage > 0)
+        {
+            for (var i = 1; i <= @ViewBag.MaxPage + 1; ++i)
+            {
+                if (@ViewBag.Page == (i - 1))
+                {
+                    <li class="active">
+                        <a href=''>@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href=''>@i</a>
+                    </li>
+                }
+            }
+        }
+
+        @if (@ViewBag.Page < @ViewBag.MaxPage)
+        {
+            <li id="next_page">
+
+                <a href=''>
+                    <i class='fa-icon-angle-right'></i>
+                </a>
+
+            </li>
+        }
+
+    </ul>
+</div>
